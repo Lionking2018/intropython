@@ -13,6 +13,7 @@ jupyter = "*"
 requests = "*"
 pillow = "*"
 beautifulsoup4 = "*"
+qrcode = "*"
 
 [requires]
 python_version = "3.7"
