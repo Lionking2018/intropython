@@ -1,13 +1,13 @@
 import subprocess
 import shutil
 import shlex
+from pathlib import Path
 
-NOTEBOOKS = ('intro', 'jupyter')
-
-for notebook in NOTEBOOKS:
-    src = notebook + '.ipynb'
-    dst = notebook + '-custom.ipynb'
-    shutil.copy(src, dst)
+for notebook in Path('.').glob('*.ipynb'):
+    notebook_stem = notebook.stem
+    if not notebook_stem.endswith('-custom'):
+        dst = notebook_stem + '-custom.ipynb'
+        shutil.copy(notebook, dst)
 
 cmd = 'git checkout -- .'
 subprocess.run(shlex.split(cmd))
